@@ -8,15 +8,17 @@ const validate = ajv.compile(input);
 
 const isEligible = function (client) {
     const isValid = validate(client);
+    var array = [];
     if (!isValid) {
         return console.log(validate.errors);
     }
     if (!client.classeDeConsumo.includes("comercial", "residencial", "industrial")) {
         output.elegivel = false;
-        output.razoesInelegibilidade = "Classe de consumo não aceita";
+        array.push("Classe de consumo não aceita");
         if (!client.modalidadeTarifaria.includes("convencional", "branca")) {
-            output.razoesInelegibilidade += ",\nModalidade tarifária não aceita";
+            array.push("Modalidade tarifária não aceita");
         }
+        output.razoesInelegibilidade = array;
         return output;
     } 
     const average = client.historicoDeConsumo.reduce((a,b) => a + b, 0) / client.historicoDeConsumo.length;
