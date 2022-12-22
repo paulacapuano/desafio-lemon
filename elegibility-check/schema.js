@@ -3,7 +3,7 @@ const { tiposDeConexao, classesDeConsumo, modalidadesTarifarias, cpf, cnpj } = r
 const enumOf = values => ({
   type: typeof values[0],
   enum: values,
-  example: values[0],
+  // example: values[0],
 })
 
 const input = {
@@ -78,8 +78,6 @@ const output = {
 
 module.exports = {
     input,
-    output,
-    getImput,
-    getOutput
+    output
 }
 
